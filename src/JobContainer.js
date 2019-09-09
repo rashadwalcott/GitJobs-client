@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Job from './Job'
 
 export default class JobContainer extends Component {
 
@@ -13,10 +14,10 @@ export default class JobContainer extends Component {
   }
 
   render(){
-
+    const jobs = this.state.jobs.map((job) => <Job job={job} key={job.id}/>)
     return(
       <div>
-
+      {jobs}
       </div>
     )
   }
