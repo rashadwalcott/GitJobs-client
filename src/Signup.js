@@ -23,11 +23,10 @@ export default class Signup extends React.Component {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       if (!data.errors) {
         localStorage.token = data.token
-        localStorage.username = data.username
-        localStorage.id = data.id
+        localStorage.username = data.user.username
+        localStorage.id = data.user.id
         this.props.history.push('/jobs')
       }
     })
