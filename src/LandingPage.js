@@ -12,7 +12,7 @@ export default class LandingPage extends Component {
 
         <p><Link to='/signup'>Sign Up</Link> <Link to='/login'>Login</Link></p>
 
-        <img src= {logo} alt='git rich logo'/>
+        <img src= {logo} alt='git rich logo' style={{height: '500px', width: '500px'}}/>
 
       </div>
     )

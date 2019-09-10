@@ -1,10 +1,13 @@
 import React, {Component} from 'react'
 import Job from './Job'
+import JobDetail from './JobDetail'
 
 export default class JobContainer extends Component {
 
   state = {
-    jobs: []
+    jobs: [],
+    clicked: false,
+    jobShow: {}
   }
 
   componentDidMount(){
@@ -13,11 +16,16 @@ export default class JobContainer extends Component {
     .then(jobs => {this.setState({jobs})})
   }
 
+  handleClick = (jobObj) => {
+    this.setState({jobShow: jobObj, clicked: true})
+  }
+
   render(){
-    const jobs = this.state.jobs.map((job) => <Job job={job} key={job.id}/>)
+    const jobs = this.state.jobs.map((job) => <Job job={job} key={job.id} handleClick={this.handleClick}/>)
     return(
       <div>
       {jobs}
+      { this.state.clicked ? <JobDetail job={this.state.jobShow} /> : null }
       </div>
     )
   }
