@@ -23,7 +23,7 @@ class App extends Component {
       .then(user => this.setState({username: user.username}))
     } else {
       //change line 26 to push to landingpage
-      this.props.history.push('/signup')
+      this.props.history.push('/login')
     }
   }
 

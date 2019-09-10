@@ -8,7 +8,7 @@ export default class Login extends React.Component {
   }
 
   handleChange = (e) => {
-    this.setState({[e.target.name]: [e.target.value]})
+    this.setState({[e.target.name]: e.target.value})
   }
 
   handleSubmit = (e) => {
@@ -34,7 +34,7 @@ export default class Login extends React.Component {
       <div>
         <h1>Login</h1>
         <form onSubmit={this.handleSubmit}>
-          <label> Username: 
+          <label> Username:
           <input onChange={this.handleChange} value={this.state.username} type='text' name='username' />
           </label>
           <label> Password:
