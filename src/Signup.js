@@ -1,11 +1,51 @@
 import React from 'react'
 
-
 export default class Signup extends React.Component {
+
+  state = {
+    username: '',
+    password: ''
+  }
+
+  handleChange = (e) => {
+    this.setState({[e.target.name]: e.target.value})
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    fetch('http://localhost:3000/users', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if (!data.errors) {
+        localStorage.token = data.token
+        localStorage.username = data.username
+        localStorage.id = data.id
+        this.props.history.push('/jobs')
+      }
+    })
+  }
+
   render () {
     return (
       <div>
-
+      <h1>Sign Up</h1>
+      <form onSubmit={this.handleSubmit}>
+        <label> Username:
+        <input onChange={this.handleChange} value={this.state.username} type='text' name='username' />
+        </label>
+        <label> Password:
+        <input onChange={this.handleChange} value={this.state.password} type='password' name='password' />
+        </label>
+        <input type='submit' value='Sign Up' />
+      </form>
       </div>
     )
   }
