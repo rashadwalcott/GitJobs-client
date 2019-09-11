@@ -25,7 +25,8 @@ export default class Login extends React.Component {
     .then(data => {
       if (data.token) {
         localStorage.token = data.token
-        this.props.history.push('/jobs')
+        this.props.getProfile()
+        this.props.history.push('/profile')
       }
     })
   }

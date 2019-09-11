@@ -27,6 +27,7 @@ export default class Signup extends React.Component {
         localStorage.token = data.token
         localStorage.username = data.user.username
         localStorage.id = data.user.id
+        
         this.props.history.push('/jobs')
       }
     })
