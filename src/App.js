@@ -10,7 +10,9 @@ import {Switch, Route, withRouter} from 'react-router-dom'
 class App extends Component {
 
   state = {
-    username: ''
+    username: '',
+    user_id: '',
+    favoriteJobs: []
   }
 
   componentDidMount(){
@@ -21,6 +23,21 @@ class App extends Component {
     }
   }
 
+  addFavorite = (id) => {
+    fetch('http://localhost:3000/favorites', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: this.state.user_id,
+        job_id: id
+      })
+    }).then(res => res.json())
+    .then(window.alert('saved for later'))
+  }
+
   getProfile = () => {
     fetch('http://localhost:3000/profile',{
       headers: {
@@ -28,7 +45,21 @@ class App extends Component {
       }
     })
     .then(res => res.json())
-    .then(user => this.setState({username: user.username}))
+    .then(user => {
+      this.setState({username: user.username, user_id: user.id})
+      this.getFavs(user.id)
+    })
+  }
+
+  getFavs = (id) => {
+    fetch(`http://localhost:3000/users/${id}`)
+    .then(res => res.json())
+    .then(user => {
+      // console.log(user);
+      this.setState({
+        favoriteJobs: user.jobs
+      })
+    })
   }
 
   render(){
@@ -37,10 +68,10 @@ class App extends Component {
       <Switch>
             <Route
               path={'/jobs'}
-              render={routerProps => <JobContainer  {...routerProps} username={this.state.username}/>} />
+              render={routerProps => <JobContainer {...routerProps} username={this.state.username} addFavorite={this.addFavorite}/>} />
             <Route path={'/login'} render={routerProps => <Login {...routerProps} getProfile={this.getProfile} />}/>
             <Route path={'/signup'} render={routerProps => <Signup {...routerProps} getProfile={this.getProfile} />}/>
-            <Route path={'/profile'} render={routerProps => <Profile {...routerProps} username={this.state.username}/>} />
+            <Route path={'/profile'} render={routerProps => <Profile {...routerProps} username={this.state.username} favoriteJobs={this.state.favoriteJobs}/>} />
             <Route exact path={'/'} component={LandingPage} />
         {/* ternary for when they are logged in this renders the job JobContainer */}
       </Switch>

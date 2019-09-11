@@ -5,13 +5,14 @@ import ReactHtmlParser from 'react-html-parser'
 class JobDetail extends Component {
 
   render(){
-    const { title, location, company, description } = this.props.job
+    const { title, location, company, description, id } = this.props.job
+
     return(
       <div className={jobdetail}>
-      <p>{title}</p>
+      <p>{title}<span onClick={() => {this.props.addFavorite(id)}}>&#x2661;</span></p>
       <p>{location}</p>
       <p>{company}</p>
-      <p>{ReactHtmlParser(description)}</p>
+      {ReactHtmlParser(description)}
       </div>
     )
   }

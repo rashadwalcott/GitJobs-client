@@ -28,7 +28,7 @@ export default class JobContainer extends Component {
       {jobs}
       </div>
       <div style={{float: 'right', width: '68%'}}>
-      { this.state.clicked ? <JobDetail job={this.state.jobShow} /> : null }
+      { this.state.clicked ? <JobDetail job={this.state.jobShow} addFavorite={this.props.addFavorite}/> : null }
       </div>
       <div style={{clear: 'both'}}></div>
       </div>
