@@ -4,6 +4,7 @@ import LandingPage from './LandingPage'
 import JobContainer from './JobContainer'
 import Login from './Login'
 import Signup from './Signup'
+import Profile from './Profile'
 import {Switch, Route, withRouter} from 'react-router-dom'
 
 class App extends Component {
@@ -27,6 +28,7 @@ class App extends Component {
   }
 
   render(){
+    console.log(this.state);
     return (
       <Switch>
             <Route
@@ -34,6 +36,7 @@ class App extends Component {
               render={routerProps => <JobContainer  {...routerProps} username={this.state.username}/>} />
             <Route path={'/login'} component={Login} />
             <Route path={'/signup'} component={Signup} />
+            <Route path={'/profile'} render={routerProps => <Profile {...routerProps} username={this.state.username}/>} />
             <Route exact path={'/'} component={LandingPage} />
         {/* ternary for when they are logged in this renders the job JobContainer */}
       </Switch>
