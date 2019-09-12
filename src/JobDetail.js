@@ -9,7 +9,7 @@ class JobDetail extends Component {
 
     return(
       <div className={jobdetail}>
-      <p>{title} <span onClick={() => {this.props.addFavorite(id)}}>&#x2661;</span> </p>
+      <p><b>{title}</b> <span onClick={() => {this.props.addFavorite(id)}}>&#x2661;</span> </p>
       <p>{location}</p>
       <p>{company}</p>
       {ReactHtmlParser(apply)}

@@ -1,10 +1,12 @@
 .job {
-  background-color: lightgray;
+  background-color: #B0C4DE;
   margin: 5px;
   border-radius: 5px;
   width: 400px;
   height: 120px;
   flex-flow: column;
+  padding: .5em;
+  cursor: pointer;
 }
 
 img {

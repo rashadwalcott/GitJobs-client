@@ -2,6 +2,7 @@ import React from 'react';
 import Job from './Job';
 import JobDetail from './JobDetail';
 import Nav from './Nav'
+import {profile, left, right, both} from './Profile.module.scss'
 
 
 export default class Profile extends React.Component {
@@ -18,16 +19,17 @@ export default class Profile extends React.Component {
   render(){
     const favs = this.props.favoriteJobs.map((job) => <Job job={job} key={job.id} handleClick={this.handleClick}/>)
     return(
-      <div style={{margin: '1%'}}>
+      <div className={profile}>
+      <h1>Welcome {this.props.username}!</h1>
       <div><Nav handleLogOut={this.props.handleLogOut}/></div>
-      <h1 style={{'fontSize': '35px'}}>Welcome {this.props.username}!</h1>
-      <div style={{float: 'left', width: '30%'}}>
+      <br></br><br></br>
+      <div className={left}>
       {favs}
       </div>
-      <div style={{float: 'right', width: '68%'}}>
+      <div className={right}>
       { this.state.clicked ? <JobDetail job={this.state.jobShow}/> : null }
       </div>
-      <div style={{clear: 'both'}}></div>
+      <div className={both}></div>
       </div>
     )
   }
