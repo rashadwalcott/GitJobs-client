@@ -1,4 +1,5 @@
 import React from 'react'
+import {form} from './Form.module.scss'
 
 export default class Signup extends React.Component {
 
@@ -27,7 +28,7 @@ export default class Signup extends React.Component {
         localStorage.token = data.token
         localStorage.username = data.user.username
         localStorage.id = data.user.id
-        
+
         this.props.history.push('/jobs')
       }
     })
@@ -35,15 +36,19 @@ export default class Signup extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className={form}>
       <h1>Sign Up</h1>
       <form onSubmit={this.handleSubmit}>
         <label> Username:
+        <br></br>
         <input onChange={this.handleChange} value={this.state.username} type='text' name='username' />
         </label>
+        <br></br>
         <label> Password:
+        <br></br>
         <input onChange={this.handleChange} value={this.state.password} type='password' name='password' />
         </label>
+        <br></br>
         <input type='submit' value='Sign Up' />
       </form>
       </div>

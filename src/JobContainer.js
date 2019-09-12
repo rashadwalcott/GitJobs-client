@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Job from './Job'
 import JobDetail from './JobDetail'
+import Nav from './Nav'
 
 export default class JobContainer extends Component {
 
@@ -23,7 +24,8 @@ export default class JobContainer extends Component {
   render(){
     const jobs = this.state.jobs.map((job) => <Job job={job} key={job.id} handleClick={this.handleClick}/>)
     return(
-      <div>
+      <div style={{margin: '1%'}}>
+      <div><Nav/></div>
       <div style={{float: 'left', width: '30%'}}>
       {jobs}
       </div>

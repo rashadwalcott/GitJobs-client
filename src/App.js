@@ -55,7 +55,6 @@ class App extends Component {
     fetch(`http://localhost:3000/users/${id}`)
     .then(res => res.json())
     .then(user => {
-      // console.log(user);
       this.setState({
         favoriteJobs: user.jobs
       })
@@ -63,7 +62,6 @@ class App extends Component {
   }
 
   render(){
-    console.log(this.state);
     return (
       <Switch>
             <Route
@@ -73,7 +71,6 @@ class App extends Component {
             <Route path={'/signup'} render={routerProps => <Signup {...routerProps} getProfile={this.getProfile} />}/>
             <Route path={'/profile'} render={routerProps => <Profile {...routerProps} username={this.state.username} favoriteJobs={this.state.favoriteJobs}/>} />
             <Route exact path={'/'} component={LandingPage} />
-        {/* ternary for when they are logged in this renders the job JobContainer */}
       </Switch>
     )
   }

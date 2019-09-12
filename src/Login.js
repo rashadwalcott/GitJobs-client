@@ -1,4 +1,5 @@
 import React from 'react'
+import {form} from './Form.module.scss'
 
 export default class Login extends React.Component {
 
@@ -26,22 +27,26 @@ export default class Login extends React.Component {
       if (data.token) {
         localStorage.token = data.token
         this.props.getProfile()
-        this.props.history.push('/profile')
+        this.props.history.push('/jobs')
       }
     })
   }
   render () {
     return (
-      <div>
+      <div className={form}>
         <h1>Login</h1>
         <form onSubmit={this.handleSubmit}>
           <label> Username:
+          <br></br>
           <input onChange={this.handleChange} value={this.state.username} type='text' name='username' />
           </label>
+          <br></br>
           <label> Password:
+          <br></br>
           <input onChange={this.handleChange} value={this.state.password} type='password' name='password' />
           </label>
-          <input type='submit' value='Log in'/>
+          <br></br>
+          <input type='submit' value='Log In'/>
         </form>
       </div>
     )
