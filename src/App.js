@@ -6,6 +6,7 @@ import Login from './Login'
 import Signup from './Signup'
 import Profile from './Profile'
 import {Switch, Route, withRouter} from 'react-router-dom'
+import ErrorPage from './ErrorPage'
 
 class App extends Component {
 
@@ -51,6 +52,11 @@ class App extends Component {
     })
   }
 
+  handleLogOut = () => {
+    localStorage.clear()
+    this.props.history.push('/')
+  }
+
   getFavs = (id) => {
     fetch(`http://localhost:3000/users/${id}`)
     .then(res => res.json())
@@ -66,11 +72,12 @@ class App extends Component {
       <Switch>
             <Route
               path={'/jobs'}
-              render={routerProps => <JobContainer {...routerProps} username={this.state.username} addFavorite={this.addFavorite}/>} />
+              render={routerProps => <JobContainer {...routerProps} username={this.state.username} addFavorite={this.addFavorite} handleLogOut={this.handleLogOut}/>} />
             <Route path={'/login'} render={routerProps => <Login {...routerProps} getProfile={this.getProfile} />}/>
             <Route path={'/signup'} render={routerProps => <Signup {...routerProps} getProfile={this.getProfile} />}/>
-            <Route path={'/profile'} render={routerProps => <Profile {...routerProps} username={this.state.username} favoriteJobs={this.state.favoriteJobs}/>} />
+            <Route path={'/profile'} render={routerProps => <Profile {...routerProps} username={this.state.username} favoriteJobs={this.state.favoriteJobs} handleLogOut={this.handleLogOut}/>} />
             <Route exact path={'/'} component={LandingPage} />
+            <Route component={ErrorPage} />
       </Switch>
     )
   }

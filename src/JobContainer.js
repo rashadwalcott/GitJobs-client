@@ -25,7 +25,7 @@ export default class JobContainer extends Component {
     const jobs = this.state.jobs.map((job) => <Job job={job} key={job.id} handleClick={this.handleClick}/>)
     return(
       <div style={{margin: '1%'}}>
-      <div><Nav/></div>
+      <div><Nav handleLogOut={this.props.handleLogOut} /></div>
       <div style={{float: 'left', width: '30%'}}>
       {jobs}
       </div>

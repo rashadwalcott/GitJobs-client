@@ -19,7 +19,7 @@ export default class Profile extends React.Component {
     const favs = this.props.favoriteJobs.map((job) => <Job job={job} key={job.id} handleClick={this.handleClick}/>)
     return(
       <div style={{margin: '1%'}}>
-      <div><Nav/></div>
+      <div><Nav handleLogOut={this.props.handleLogOut}/></div>
       <h1 style={{'fontSize': '35px'}}>Welcome {this.props.username}!</h1>
       <div style={{float: 'left', width: '30%'}}>
       {favs}
