@@ -36,7 +36,11 @@ class App extends Component {
         job_id: id
       })
     }).then(res => res.json())
-    .then(window.alert('saved for later'))
+    .then(() => {
+      window.alert('saved for later')
+      this.getFavs(this.state.user_id)
+      }
+    )
   }
 
   getProfile = () => {
@@ -76,7 +80,7 @@ class App extends Component {
             <Route path={'/login'} render={routerProps => <Login {...routerProps} getProfile={this.getProfile} />}/>
             <Route path={'/signup'} render={routerProps => <Signup {...routerProps} getProfile={this.getProfile} />}/>
             <Route path={'/profile'} render={routerProps => <Profile {...routerProps} username={this.state.username} favoriteJobs={this.state.favoriteJobs} handleLogOut={this.handleLogOut}/>} />
-            <Route exact path={'/'} component={LandingPage} />
+            <Route exact path={'/'} render={routerProps => <LandingPage {...routerProps} handleLogOut={this.handleLogOut}/>} />
             <Route component={ErrorPage} />
       </Switch>
     )

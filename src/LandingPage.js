@@ -11,7 +11,7 @@ export default class LandingPage extends Component {
       <div className={landingpage}>
       <h1>Welcome to GitJobs or Die Pryin</h1>
         {localStorage.token ?
-          (<Nav />) :
+          (<Nav handleLogOut={this.props.handleLogOut}/>) :
           (<p><Link to='/signup'>Sign Up</Link> <Link to='/login'>Login</Link></p>)}
           <br></br><br></br><br></br><br></br>
         <img src= {logo} alt='git rich logo' style={{height: '600px', width: '600px'}}/>
