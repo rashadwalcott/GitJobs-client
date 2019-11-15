@@ -1,5 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# GitJobs-Client
+An application where a user can view Software Engineering jobs. The user is able to select and see details for that job as well as save the job for later and apply through direct links.
+# Demo
+<p><a href ="https://youtu.be/hYzK2no91N8"><img src="https://i.imgur.com/4VdQncv.jpg" alt="demo-image" width="450" height="300"/></a></p>
+<h1> Tech/framework used </h1>
+<h3> Built with </h3>
+<p> ∙ <a href = "https://reactjs.org/">React </a></p>
+<p> ∙ <a href = "https://css-tricks.com/sass-techniques-from-the-trenches/">SASS </a></p>
+
 ## Available Scripts
 
 In the project directory, you can run:
